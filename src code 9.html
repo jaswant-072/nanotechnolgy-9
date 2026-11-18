@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nanotechnology Animations</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #203040;
+      background: #f4f8fb;
+    }
+
+    header, footer {
+      padding: 16px;
+      color: white;
+      background: #102a43;
+      text-align: center;
+    }
+
+    main {
+      width: min(800px, 90%);
+      margin: 30px auto;
+    }
+
+    h1, h2 {
+      color: #102a43;
+    }
+
+    .ticker {
+      overflow: hidden;
+      padding: 12px 0;
+      color: white;
+      background: #167d9a;
+    }
+
+    .moving-text {
+      width: max-content;
+      animation: slide 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes slide {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(100vw - 100%)); }
+    }
+    .loader {
+      width: 42px;
+      height: 42px;
+      margin: 20px 0;
+      border: 5px solid #cde5eb;
+      border-top-color: #167d9a;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    button {
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 6px;
+      color: white;
+      background: #167d9a;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover, button:focus-visible {
+      transform: scale(1.1);
+      background: #238447;
+    }
+
+    .card {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 8px;
+      background: white;
+      box-shadow: 0 4px 12px #102a4320;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.5s, transform 0.5s, visibility 0.5s;
+    }
+
+    .card.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Nano / Future</h1>
+    <p>Nanotechnology for healthcare and energy</p>
+  </header>
+
+  <div class="ticker">
+    <div class="moving-text">Small science can inspire big ideas!</div>
+  </div>
+
+  <main>
+    <h2>See the animations</h2>
+    <p>The loader spins continuously. Hover over the button to see its effect.</p>
+
+    <div class="loader" aria-label="Loading animation"></div>
+
+    <button type="button" onclick="toggleCard()">Show or Hide Information</button>
+
+    <section class="card" id="info-card">
+      <h2>Nanotechnology innovations</h2>
+      <p>
+        Researchers are exploring nanoscale materials for medical sensors,
+        solar cells, and energy storage. These ideas need careful testing
+        before they can be used.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>Practicum No. 9 · UI Components for Animation</p>
+  </footer>
+
+  <script>
+    function toggleCard() {
+      document.getElementById("info-card").classList.toggle("show");
+    }
+  </script>
+</body>
+</html>
